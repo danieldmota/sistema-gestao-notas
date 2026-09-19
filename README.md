@@ -1,66 +1,50 @@
-# Sistema Acadêmico de Gestão de Notas
+# Sistema de Gestão de Notas
 
-Projeto desenvolvido em Java para a atividade prática de Programação Orientada a Objetos.
+Projeto em Java criado para representar o funcionamento básico de uma turma. O programa cadastra professores, alunos e disciplinas, organiza os alunos em turmas e registra suas notas.
 
-## Funcionalidades implementadas
+## Funcionalidades
 
-- Herança entre `Pessoa`, `Aluno` e `Professor`.
-- Cadastro de professor, disciplina, turma e alunos.
-- Geração automática de registro, matrícula e códigos.
-- Inclusão e remoção de alunos da turma.
-- Bloqueio de aluno duplicado na mesma turma.
-- Lançamento de notas entre 0 e 10.
-- Validação para impedir notas de alunos que não pertencem à turma.
-- Consulta das turmas e notas de um aluno.
-- Cenário completo de execução na classe `Main`.
+- Cadastro de professor, alunos e disciplina.
+- Criação de turma com professor e disciplina.
+- Inclusão e remoção de alunos.
+- Bloqueio de alunos duplicados na mesma turma.
+- Registro e alteração de notas entre 0 e 10.
+- Consulta de notas e turmas de cada aluno.
+- Geração automática de matrículas, registros e códigos.
 
-## Estrutura
+## Estrutura das classes
 
-Cada classe está em seu próprio arquivo dentro da pasta `src`:
-
-- `Pessoa.java`
-- `Aluno.java`
-- `Professor.java`
-- `Disciplina.java`
-- `Turma.java`
-- `Nota.java`
-- `Main.java`
+- `Pessoa`: reúne nome, CPF e e-mail.
+- `Aluno`: herda de `Pessoa` e mantém matrícula e turmas.
+- `Professor`: herda de `Pessoa` e realiza os cadastros e lançamentos.
+- `Disciplina`: armazena código, nome e carga horária.
+- `Turma`: relaciona professor, disciplina, alunos e notas.
+- `Nota`: representa uma atividade, seu valor e o aluno avaliado.
+- `Main`: cria os objetos e executa um exemplo completo do sistema.
 
 ## Como executar
 
-No terminal, a partir da pasta raiz do projeto:
+Na pasta principal do projeto, compile e execute com:
 
 ```bash
 javac -d out src/*.java
 java -cp out Main
 ```
 
-O projeto utiliza apenas recursos básicos da biblioteca padrão do Java e não depende de banco de dados, interface gráfica ou bibliotecas externas.
+O projeto utiliza somente a biblioteca padrão do Java.
 
 ## Decisões de implementação
 
-- As notas válidas ficam no intervalo de 0 a 10.
-- Os identificadores são gerados por contadores internos: `P0001`, `A0001`, `DISC001` e `TURMA001`.
-- O aluno mantém internamente suas turmas para que `consultarTurmas()` e `consultarNotas()` funcionem sem parâmetros.
-- Ao remover um aluno de uma turma, suas notas naquela turma também são removidas para manter a consistência dos dados.
+- As notas são aceitas apenas no intervalo de 0 a 10.
+- Matrículas, registros e códigos são criados por contadores internos.
+- Um aluno só pode receber nota se estiver cadastrado na turma.
+- Quando um aluno é removido, suas notas naquela turma também são apagadas.
+- As listas de alunos, turmas e notas usam `ArrayList`.
 
 ## Conceitos de POO utilizados
 
-- **Abstração:** `Pessoa` representa as informações comuns a alunos e professores.
-- **Herança:** `Aluno` e `Professor` estendem `Pessoa`.
-- **Encapsulamento:** os atributos são privados e acessados por métodos das classes.
-- **Polimorfismo:** `Aluno` e `Professor` implementam `exibirDados()` de maneiras diferentes.
-- **Associação:** uma `Turma` se relaciona com uma `Disciplina`, um `Professor`, vários alunos e várias notas.
-
-## Como publicar em um repositório Git
-
-Depois de criar um repositório vazio no GitHub, execute na pasta do projeto:
-
-```bash
-git init
-git add .
-git commit -m "Implementa sistema acadêmico de gestão de notas"
-git branch -M main
-git remote add origin URL_DO_REPOSITORIO
-git push -u origin main
-```
+- **Herança:** `Aluno` e `Professor` aproveitam os atributos e métodos de `Pessoa`.
+- **Encapsulamento:** os atributos são privados e o acesso acontece pelos métodos das classes.
+- **Polimorfismo:** alunos e professores possuem suas próprias implementações de `exibirDados()`.
+- **Associação:** a turma mantém relações com uma disciplina, um professor, seus alunos e suas notas.
+- **Abstração:** cada classe representa uma parte específica do sistema acadêmico.

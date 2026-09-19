@@ -23,10 +23,8 @@ public class Main {
         turma.adicionarAluno(italo);
         turma.adicionarAluno(mariana);
 
-        // Demonstra a regra que impede duplicidade.
         turma.adicionarAluno(daniel);
 
-        // Demonstra a remoção e a inclusão do aluno novamente.
         turma.removerAluno(mariana);
         turma.adicionarAluno(mariana);
 
@@ -54,7 +52,6 @@ public class Main {
         daniel.consultarNotas();
         daniel.consultarTurmas();
 
-        // Demonstra a atualização do e-mail herdado de Pessoa.
         daniel.setEmail("daniel.dourado@email.com");
 
         System.out.println("\nDados dos objetos cadastrados:");
